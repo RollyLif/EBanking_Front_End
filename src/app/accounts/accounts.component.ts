@@ -38,7 +38,16 @@ export class AccountsComponent implements OnInit {
   }
 
   handleAccountOperation() {
-    
+    let accountId : string = this.accountFormGroup.value.accountId;
+    let operationType = this.operationFormGroup.value.operationType;
+
+    if(operationType=='DEBIT'){
+
+    }else if(operationType=='CREDIT'){
+
+    }else{
+      
+    }
   }
 
   gotoPage(page: number) {
