@@ -17,12 +17,12 @@ export class AccountsService {
 
   public debit(accountId : string, amount : number, description: string){
     let data = {accountId : accountId, amount :amount, description : description}
-    return this.http.post(environment.backendhost+"/accounts/debit"+accountId,data);
+    return this.http.post(environment.backendhost+"/accounts/debit",data);
   }
 
   public credit(accountId : string, amount : number, description: string){
     let data = {accountId : accountId, amount :amount, description : description}
-    return this.http.post(environment.backendhost+"/accounts/crebit"+accountId,data);
+    return this.http.post(environment.backendhost+"/accounts/crebit",data);
   }
 
   public transfer(accountSource : string, accountDestination : string, amount : number, description: string){

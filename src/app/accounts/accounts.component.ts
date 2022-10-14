@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -40,13 +41,40 @@ export class AccountsComponent implements OnInit {
   handleAccountOperation() {
     let accountId : string = this.accountFormGroup.value.accountId;
     let operationType = this.operationFormGroup.value.operationType;
-
+    let amount : number = this.operationFormGroup.value.amount;
+    let description : string = this.operationFormGroup.value.description;
+    let accountDestination : string = this.operationFormGroup.value.accountDestination;
     if(operationType=='DEBIT'){
-
+      this.accountService.debit(accountId, amount, description).subscribe({
+        next :(data) => {
+          alert("Sucess debit");
+          this.handleSearchAccount();
+        },
+        error : (err) =>{
+          console.log(err);
+        }
+      });
     }else if(operationType=='CREDIT'){
+      this.accountService.credit(accountId, amount, description).subscribe({
+        next :(data) => {
+          alert("Sucess credit");
+          this.handleSearchAccount();
+        },
+        error : (err) =>{
+          console.log(err);
+        }
+      });
 
-    }else{
-      
+    }else if(operationType =='TRANSFER'){
+      this.accountService.transfer(accountId, accountDestination, amount, description).subscribe({
+        next :(data) => {
+          alert("Sucess transfer");
+          this.handleSearchAccount();
+        },
+        error : (err) =>{
+          console.log(err);
+        }
+      });
     }
   }
 
