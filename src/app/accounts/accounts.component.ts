@@ -40,7 +40,7 @@ export class AccountsComponent implements OnInit {
 
   handleAccountOperation() {
     let accountId : string = this.accountFormGroup.value.accountId;
-    let operationType = this.operationFormGroup.value.operationType;
+    let operationType : string = this.operationFormGroup.value.operationType;
     let amount : number = this.operationFormGroup.value.amount;
     let description : string = this.operationFormGroup.value.description;
     let accountDestination : string = this.operationFormGroup.value.accountDestination;
@@ -50,7 +50,7 @@ export class AccountsComponent implements OnInit {
           alert("Sucess debit");
           this.handleSearchAccount();
         },
-        error : (err) =>{
+        error:(err) =>{
           console.log(err);
         }
       });
