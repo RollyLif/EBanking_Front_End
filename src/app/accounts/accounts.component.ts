@@ -48,6 +48,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.debit(accountId, amount, description).subscribe({
         next :(data) => {
           alert("Sucess debit");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error:(err) =>{
@@ -58,6 +59,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.credit(accountId, amount, description).subscribe({
         next :(data) => {
           alert("Sucess credit");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error : (err) =>{
@@ -69,6 +71,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.transfer(accountId, accountDestination, amount, description).subscribe({
         next :(data) => {
           alert("Sucess transfer");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error : (err) =>{
